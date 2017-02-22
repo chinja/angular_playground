@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
+<body>
+<!-- Commented out probably because can't have two apps like this
+<div ng-app="">
+  <p>Name: <input type="text" ng-model="name"></p>
+  {{name}}
+</div>
+-->
+<!--
+<div data-ng-app="" class="container" data-ng-init="class_list=[
+  {class:'Blue',people:['Grant Chang','Ernest Yip']},
+  {class:'Gold',people:['','']},
+  {class:'Alpha',people:['Grant Chang','Ernest Yip']},
+  {class:'Zeta',people:['Spencer Chin','Max Clemence']}
+  ]">
+  <input type="text" data-ng-model="classfield">
+  <input type="text" data-ng-model="namefield">
+  <h3>List the alphabet with ng-repeat</h3>
+  <ul>
+    <li data-ng-repeat="class in class_list | filter:classfield | orderBy:'class'">
+      {{ class.class | uppercase }} - {{class.people[0]}}</li>
+  </ul>
+</div>
+-->
+
+<div data-ng-app="demoApp" class="container" data-ng-controller="SimpleController">
+  <h3>Scope Customers</h3>
+  <ul>
+    <li data-ng-repeat="cust in customers | orderBy:'name'">
+      {{ cust.name }} | {{ cust.city }}
+    </li>
+  </ul>
+</div>
+
+<script>
+  var demoApp = angular.module('demoApp',[]);
+  function SimpleController($scope){
+    $scope.customers=[
+      {name:'Jim', city:'Seattle'},
+      {name:'Albert', city:'Omaha'},
+      {name:'Leon', city:'New York'}];
+  }
+  demoApp.controller('SimpleController', SimpleController);
+</script>
+</body>
+</html>
